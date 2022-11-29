@@ -1,0 +1,43 @@
+ziffer(0).
+ziffer(1).
+ziffer(2).
+ziffer(3).
+ziffer(4).
+ziffer(5).
+ziffer(6).
+ziffer(7).
+ziffer(8).
+ziffer(9).
+
+loesung(A, F, G, L, N):-
+    ziffer(L), G is (L+L) mod 10, G\=L, U1 is (L+L) // 10,
+    ziffer(A), A\=L, A\=G,
+    N is (A+A+U1) mod 10, N\=L, N\=G, N\= A,
+    U2 is (A+A+U1) // 10,
+    A is (A+A+U2) mod 10, 
+    F is (A+A+U2) // 10, F \= L, F\=G, F\=A, F\=N.
+
+loesung2(B, I, L, R, M, A, E):-
+    ziffer(L), ziffer(A), L \= A,
+    E is (L+A) mod 10, U1 is (L+A) // 10, E \=A, E\=L,
+    ziffer(M), M \= L, M\= A, M\=E, 
+    B is (L+M+U1) mod 10, B\= L, B \=A, B\=E, B \= M,
+    U2 is (L+M+U1) // 10, 
+    ziffer(I), I \= L, I\= A, I \=E, I\=M, I \=B,
+    ziffer(R), R \= L, R\= A, R \=E, R\=M, R \=B, R \= I,
+    E is (I+R+U2) mod 10, U3 is (I+R+U2) // 10,
+    I is (B+I+U3) mod 10, L is (B+I+U3) // 10.
+
+loesung3(S, E, N, D, M, O, R, Y):-
+    ziffer(D), ziffer(E), D \= E,
+    Y is (D+E) mod 10, U1 is (D+E) // 10, Y \= D, Y \= E,
+    ziffer(N), N \= Y, N\= D, N\= E,
+    ziffer(R), R \= Y, R\= D, R\= E, R \= N,
+    E is (N+R+U1) mod 10, U2 is (N+R+U1) // 10,
+    ziffer(O),  O \= Y, O\= D, O\= E, O \= N, O \= R,
+    N is (E+O+U2) mod 10, U3 is (E+O+U2) // 10,
+    ziffer(S),  S \= Y, S\= D, S\= E, S \= N, S \= R, S \= O,
+    ziffer(M), M \= Y, M\= D, M\= E, M\= N, M \= R, M \= O, M \= S, M\= 0,
+    O is(S+M+U3) mod 10, 
+    M is (S+M+U3) // 10.
+   
